@@ -1,16 +1,18 @@
 package com.github.bitlyons.runway;
 
-import com.github.bitlyons.utils.*;
+import com.github.bitlyons.utils.FileManagment;
+import com.github.bitlyons.utils.Popups;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.geometry.Side;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.*;
-import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
 import java.util.ArrayList;
 
 
@@ -110,7 +112,7 @@ public class Main extends Application {
                     }
         });
         MenuItem viewAircrafts = new MenuItem("View Aircraft's");
-        viewAircrafts.setOnAction(f ->listPlanes());
+        viewAircrafts.setOnAction(e ->listPlanes());
         planeButton.getItems().addAll(addNewAircraft,viewAircrafts);
         planeButton.setPrefWidth(120);
         planeButton.setPopupSide(Side.RIGHT);
@@ -118,7 +120,13 @@ public class Main extends Application {
         //FlightPath Button
         MenuButton flightPathButton = new MenuButton("Flight Paths");
         MenuItem addNewFlightPAth = new MenuItem("Add New Flight Path");
-        addNewFlightPAth.setOnAction(e ->{});
+        addNewFlightPAth.setOnAction(e ->{
+            FlightPath newFlight =  AddNew.flightPath();
+            if(!newFlight.getAirportA().equalsIgnoreCase("exitError234556")){
+                flightPathDb.add(newFlight);
+                listPlanes(); //force main window back to Planes view.
+             }
+        });
         MenuItem viewAFlightPaths = new MenuItem("View Flight Paths");
         viewAFlightPaths.setOnAction(e ->listFlightPath());
         flightPathButton.getItems().addAll(addNewFlightPAth,viewAFlightPaths);
