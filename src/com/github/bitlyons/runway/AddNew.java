@@ -14,9 +14,9 @@ import javafx.stage.Stage;
  */
 
 public class AddNew {
-    static String name, manufacturerName;
+    static String name, manufacturerName, airportAout, airportBout;
     static int age, passengerNo;
-    static double salary, flightHour;
+    static double salary, flightHour, pathTimeout;
     static boolean chiefStat, purserStat;
 
     public static Employee staff() {
@@ -284,6 +284,98 @@ public class AddNew {
 
 
         return newPlane;
+    }
+
+
+    //Flight Path
+
+    public static FlightPath flightPath() {
+        Plane newPlane;
+        Stage window = new Stage();
+
+        window.initModality(Modality.APPLICATION_MODAL); //stop user from interacting with other windows
+        window.setTitle("Add New Plane");
+
+        //Layout
+        GridPane layout = new GridPane();
+        layout.setPadding(new Insets(30, 30, 30, 30)); //30px padding around window
+        layout.setVgap(10); //spacing between cells vertical
+        layout.setHgap(10); //spacing between cells horizontal
+
+        //airportA
+        Label airportALabel = new Label("Airport A : ");
+        GridPane.setConstraints(airportALabel, 0, 0);
+        airportALabel.setPrefWidth(100);
+        TextField airportA = new TextField();
+        airportA.setPrefWidth(300);
+        airportA.setPromptText("Enter Planes Name!");
+        GridPane.setConstraints(airportA, 1, 0);
+
+
+        //Airport B
+        Label airportBLabel = new Label("Airport B : ");
+        GridPane.setConstraints(airportBLabel, 0, 1);
+        TextField airportB = new TextField();
+        airportB.setPromptText("Enter the second Airport");
+        GridPane.setConstraints(airportB, 1, 1);
+
+
+        //path time
+        Label timeTakeLabel = new Label("Path Time : ");
+        GridPane.setConstraints(timeTakeLabel, 0, 2);
+        TextField timeTake = new TextField();
+        timeTake.setPromptText("Enter how long the flight will last");
+        GridPane.setConstraints(timeTake, 1, 2);
+
+        timeTake.textProperty().addListener((v, oldValue, NewValue) -> {
+            try {
+                if (!NewValue.equals("")) Double.parseDouble(NewValue);
+            } catch (Exception e) {
+                Popups.alert("Warning", " Value entered in Path Timeis not a Number! ");
+            }
+        });
+
+
+        Button submit = new Button("Submit");
+        GridPane.setColumnSpan(submit, 2);
+        GridPane.setConstraints(submit, 0, 7);
+        GridPane.setHalignment(submit, HPos.CENTER);
+
+        //add all non role specific to the layout
+        layout.getChildren().addAll(airportALabel, airportA, airportBLabel, airportB, timeTakeLabel, timeTake, submit);
+
+
+        //submit button
+        submit.setOnAction(e -> {
+            try{
+                airportAout = airportA.getText();
+                airportBout = airportB.getText();
+                pathTimeout = Double.parseDouble(timeTake.getText());
+                chiefStat =true; //just using it as a true statement for all info entered and correct.
+                window.close();
+            }
+            catch(Exception err){
+                Popups.alert("Error", "Please fill out the Fields");
+            }
+
+        });
+
+        //Set the scene.
+        Scene scene = new Scene(layout, 500, 300);
+        window.setScene(scene);
+        window.showAndWait();
+
+
+        FlightPath newPath;
+        if(chiefStat){
+            newPath = new FlightPath(airportAout, airportBout, pathTimeout);
+        }
+        else {
+            newPath = new FlightPath("exitError234556", "", 0); //dummy data used when window not complete
+        }
+
+
+        return newPath;
     }
 
 }
