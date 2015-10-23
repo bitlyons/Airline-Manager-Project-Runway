@@ -204,12 +204,12 @@ public class Main extends Application {
        try {
            employeeDb = FileManagment.loadArraylist(dirLocation + "/employee.db");
            planeDb = FileManagment.loadArraylist(dirLocation +"/airplane.db");
-           flightPathDb = FileManagment.loadArraylist(dirLocation +"/flightPathDb");
+           flightPathDb = FileManagment.loadArraylist(dirLocation +"/flightPath.db");
        }
        catch(Exception e){ //in the event that the dirLocation is incorrect, try default location.
             employeeDb = FileManagment.loadArraylist("Database/employee.db");
             planeDb = FileManagment.loadArraylist("Database/airplane.db");
-            flightPathDb = FileManagment.loadArraylist("Database/flightPathDb");
+            flightPathDb = FileManagment.loadArraylist("Database/flightPath.db");
         }
     }
 
