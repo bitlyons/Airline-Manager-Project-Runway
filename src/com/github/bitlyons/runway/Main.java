@@ -124,7 +124,7 @@ public class Main extends Application {
             FlightPath newFlight =  AddNew.flightPath();
             if(!newFlight.getAirportA().equalsIgnoreCase("exitError234556")){
                 flightPathDb.add(newFlight);
-                listPlanes(); //force main window back to Planes view.
+                listFlightPath(); //force main window back to flight Paths view.
              }
         });
         MenuItem viewAFlightPaths = new MenuItem("View Flight Paths");
@@ -185,9 +185,14 @@ public class Main extends Application {
            catch(Exception e){
                Popups.alert("Error Saving", "An error occurred while saving, to avoid loss\n of the database, the default location will be used");
                //Save each of the arraylists to there own file.
-               FileManagment.save(employeeDb, "Database/employee.db");
-               FileManagment.save(planeDb, "Database/airplane.db");
-               FileManagment.save(flightPathDb, "Database/flightPath.db");
+               try {
+                   FileManagment.save(employeeDb, "Database/employee.db");
+                   FileManagment.save(planeDb, "Database/airplane.db");
+                   FileManagment.save(flightPathDb, "Database/flightPath.db");
+               }
+               catch (Exception f){
+                   Popups.alert("Error", "Save Failed");
+               }
            }
     }
 
@@ -204,12 +209,17 @@ public class Main extends Application {
        try {
            employeeDb = FileManagment.loadArraylist(dirLocation + "/employee.db");
            planeDb = FileManagment.loadArraylist(dirLocation +"/airplane.db");
-           flightPathDb = FileManagment.loadArraylist(dirLocation +"/flightPathDb");
+           flightPathDb = FileManagment.loadArraylist(dirLocation +"/flightPath.db");
        }
-       catch(Exception e){ //in the event that the dirLocation is incorrect, try default location.
-            employeeDb = FileManagment.loadArraylist("Database/employee.db");
-            planeDb = FileManagment.loadArraylist("Database/airplane.db");
-            flightPathDb = FileManagment.loadArraylist("Database/flightPathDb");
+       catch(Exception e){
+            try { //in the event that the dirLocation is incorrect, try default location.
+                employeeDb = FileManagment.loadArraylist("Database/employee.db");
+                planeDb = FileManagment.loadArraylist("Database/airplane.db");
+                flightPathDb = FileManagment.loadArraylist("Database/flightPath.db");
+            }
+            catch(Exception f){
+                Popups.alert("Error", "Load Location not found!");
+            }
         }
     }
 

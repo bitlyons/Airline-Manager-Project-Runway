@@ -1,5 +1,6 @@
 package com.github.bitlyons.utils;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -44,6 +45,7 @@ public class Popups {
         layout2.getChildren().addAll(yesButton, noButton);
         layout2.setAlignment(Pos.CENTER);
         layout.getChildren().addAll(label,layout2); //adds the message and the previous layout that holds our buttons
+        layout.setPadding(new Insets(20, 10, 10, 20));
         layout.setAlignment(Pos.CENTER);
 
         //Set the scene.
@@ -68,6 +70,7 @@ public class Popups {
 
         //Layout
         VBox layout = new VBox(15);
+        layout.setPadding(new Insets(10, 10, 10, 10));
         layout.getChildren().addAll(label,okButton);
         layout.setAlignment(Pos.CENTER);
 

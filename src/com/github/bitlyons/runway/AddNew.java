@@ -66,8 +66,7 @@ public class AddNew {
 
         employeeSalary.textProperty().addListener((v, oldValue, NewValue) -> {
             try {
-                if (NewValue.equals("")) ;
-                else Double.parseDouble(NewValue);
+                if (!NewValue.equals(""))Double.parseDouble(NewValue);
             } catch (Exception e) {
                 Popups.alert("Warning", "Value entered in Salary is not a Number!");
             }
@@ -331,10 +330,9 @@ public class AddNew {
             try {
                 if (!NewValue.equals("")) Double.parseDouble(NewValue);
             } catch (Exception e) {
-                Popups.alert("Warning", " Value entered in Path Timeis not a Number! ");
+                Popups.alert("Warning", " Value entered in Path Time is not a Number! ");
             }
         });
-
 
         Button submit = new Button("Submit");
         GridPane.setColumnSpan(submit, 2);
@@ -364,7 +362,6 @@ public class AddNew {
         Scene scene = new Scene(layout, 500, 300);
         window.setScene(scene);
         window.showAndWait();
-
 
         FlightPath newPath;
         if(chiefStat){
