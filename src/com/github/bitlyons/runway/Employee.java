@@ -11,19 +11,19 @@ public class Employee implements Serializable{
     private double salary;
     private String role;
 
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
     public Employee(String name, int age, double salary, String role){
         this.name = name;
         this.age = age;
         this.salary = salary;
         this.daysWithCompany = 0; //initial value
+        this.role = role;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
         this.role = role;
     }
 
@@ -57,6 +57,19 @@ public class Employee implements Serializable{
 
     public void setSalary(double salary) {
         this.salary = salary;
+    }
+
+
+    public boolean isChiefPurser() {
+        return false;
+    }
+
+    public boolean isPurser() {
+        return false;
+    }
+
+    public double getFlightHours() {
+        return 0.0;
     }
 
     @Override

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class FileManagment {
 
-    public static void save(Object objectName,String saveLocation)
+    public static boolean save(Object objectName, String saveLocation)
     {
         try
         {
@@ -24,8 +24,11 @@ public class FileManagment {
         catch (IOException e)
         {
             System.err.println("IOException: " + e.getMessage() ); //output to terminal for debugging
-            Popups.alert("Warning","Save Error\nFile/location Not found"); //popup for end user.
+            return false;
+            //removing this line for now.
+            //Popups.alert("Warning","Save Error\nFile/location Not found"); //popup for end user.
         }
+        return true;
     }
 
 

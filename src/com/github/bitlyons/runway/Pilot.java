@@ -13,6 +13,7 @@ public class Pilot extends Employee{
         this.flightHours = flightHours;
     }
 
+    @Override
     public double getFlightHours() {
         return flightHours;
     }

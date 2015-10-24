@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -27,8 +28,11 @@ public class Popups {
 
         Label label = new Label();
         label.setText(message);
+        label.setTextAlignment(TextAlignment.CENTER);
         Button yesButton = new Button("Yes");
+        yesButton.setMinWidth(90);// i find 90 to be a nice size
         Button noButton = new Button("No");
+        noButton.setMinWidth(90);
 
         yesButton.setOnAction(e -> {
             yesNo = true;
@@ -40,7 +44,7 @@ public class Popups {
         });
 
         //Layout
-        VBox layout = new VBox(15); //using a Vbox to set the message on top of the buttons
+        VBox layout = new VBox(15); //using a VBox to set the message on top of the buttons
         HBox layout2 = new HBox(10); //using a HBox to set the buttons side by side
         layout2.getChildren().addAll(yesButton, noButton);
         layout2.setAlignment(Pos.CENTER);
@@ -65,7 +69,9 @@ public class Popups {
 
         Label label = new Label();
         label.setText(message);
+        label.setTextAlignment(TextAlignment.CENTER);
         Button okButton = new Button("OK!");
+        okButton.setMinWidth(90);
         okButton.setOnAction(e -> window.close());
 
         //Layout

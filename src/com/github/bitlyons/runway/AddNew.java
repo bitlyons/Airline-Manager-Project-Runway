@@ -151,7 +151,8 @@ public class AddNew {
         });
 
         //Set the scene.
-        Scene scene = new Scene(layout, 500, 300);
+        Scene scene = new Scene(layout, 500, 350);
+        scene.getStylesheets().add(Main.class.getResource("ProjectRunway.css").toExternalForm());
         window.setScene(scene);
         window.showAndWait();
 
@@ -160,7 +161,6 @@ public class AddNew {
                 //have to put flightHour here to avoid empty value.
                 flightHour = Double.parseDouble(flightHours.getText());
                 newEmployee = new Pilot(name, age, salary, flightHour);
-                System.out.print(newEmployee.toString());
                 return newEmployee;
             } else {
                 if (!purserStat) chiefStat = false; //since we disabled it, workaround to set it to false
@@ -269,6 +269,7 @@ public class AddNew {
 
         //Set the scene.
         Scene scene = new Scene(layout, 500, 300);
+        scene.getStylesheets().add(Main.class.getResource("ProjectRunway.css").toExternalForm());
         window.setScene(scene);
         window.showAndWait();
 
@@ -360,6 +361,7 @@ public class AddNew {
 
         //Set the scene.
         Scene scene = new Scene(layout, 500, 300);
+        scene.getStylesheets().add(Main.class.getResource("ProjectRunway.css").toExternalForm());
         window.setScene(scene);
         window.showAndWait();
 

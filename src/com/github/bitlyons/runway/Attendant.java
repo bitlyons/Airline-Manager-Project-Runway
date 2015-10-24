@@ -13,6 +13,24 @@ public class Attendant extends Employee{
     }
 
     @Override
+    public boolean isChiefPurser() {
+        return isChiefPurser;
+    }
+
+    public void setChiefPurser(boolean chiefPurser) {
+        isChiefPurser = chiefPurser;
+    }
+
+    @Override
+    public boolean isPurser() {
+        return isPurser;
+    }
+
+    public void setPurser(boolean purser) {
+        isPurser = purser;
+    }
+
+    @Override
     public String toString() {
         return  super.toString()+
                 " Attendant{" +
