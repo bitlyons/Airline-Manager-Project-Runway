@@ -92,9 +92,8 @@ public class Main extends Application {
         MenuItem addNewStaff = new MenuItem("Add New Staff Member");
         addNewStaff.setOnAction(e -> {
             Employee newStaff = AddNew.staff();
-            if(newStaff.getName().equalsIgnoreCase("exitError88123")) {
-                System.out.println("Add new Staff was closed, not adding to arraylist"); //terminal output for testing
-            } else {
+            if(newStaff.getName().equalsIgnoreCase("exitError88123")) ;
+            else {
                 employeeDb.add(newStaff);
                 listEmployees(); //force main window back to employee view.
             }
@@ -326,13 +325,19 @@ public class Main extends Application {
         //airportA, airportB, flightTime
         TableColumn<FlightPath, String> airportAName = new TableColumn<>("From");
         airportAName.setCellValueFactory(new PropertyValueFactory<>("airportA"));
+        airportAName.setMinWidth(252);
 
         TableColumn<FlightPath, String> airportBName = new TableColumn<>("To");
         airportBName.setCellValueFactory(new PropertyValueFactory<>("airportB"));
+        airportBName.setMinWidth(252);
+
+        TableColumn<FlightPath, String> time = new TableColumn<>("Time");
+        time.setCellValueFactory(new PropertyValueFactory<>("flightTime"));
+        time.setMinWidth(142);
 
         flightTable = new TableView<>();
         flightTable.setItems(flights);
-        flightTable.getColumns().addAll(airportAName, airportBName);
+        flightTable.getColumns().addAll(airportAName, airportBName, time);
         layout.setCenter(flightTable);
         currentTable = "flightTable";
 
@@ -393,8 +398,28 @@ public class Main extends Application {
                         }
                         break;
                     case "planeTable":
+                        Plane editedPlane = EditData.plane(selectedPlane);
+                        if(editedPlane.getName().equalsIgnoreCase("exitError32456")) break;
+
+                            //TODO Create a check to see if record remains unchanged
+
+                        else {
+                            planeDb.remove(planeTable.getSelectionModel().getSelectedIndex());
+                            planeDb.add(editedPlane);
+                            listPlanes();
+                        }
                         break;
                     case "flightTable":
+                        FlightPath editedPath = EditData.flightPath(selectedPath);
+                        if(editedPath.getAirportA().equalsIgnoreCase("exitError234556")) break;
+
+                            //TODO Create a check to see if record remains unchanged
+
+                        else {
+                            flightPathDb.remove(flightTable.getSelectionModel().getSelectedIndex());
+                            flightPathDb.add(editedPath);
+                            listFlightPath();
+                        }
                         break;
                 }
             } catch(Exception f) {

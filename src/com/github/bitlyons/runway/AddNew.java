@@ -18,6 +18,10 @@ public class AddNew {
     static int age, passengerNo;
     static double salary, flightHour, pathTimeout;
     static boolean chiefStat, purserStat;
+    //placeholders incase user closes the window
+    static Plane newPlane = new Plane("exitError32456", "", 0, 0);
+    static FlightPath newPath = new FlightPath("exitError234556", "", 0);
+    static Employee newEmployee = new Attendant("exitError88123", 0, 0, false, false);
 
     public static Employee staff() {
         Employee newEmployee;
@@ -180,7 +184,6 @@ public class AddNew {
     //Add new Plane
 
     public static Plane plane() {
-        Plane newPlane;
         Stage window = new Stage();
 
         window.initModality(Modality.APPLICATION_MODAL); //stop user from interacting with other windows
@@ -284,13 +287,14 @@ public class AddNew {
 
 
         return newPlane;
+
     }
 
 
     //Flight Path
 
     public static FlightPath flightPath() {
-        Plane newPlane;
+
         Stage window = new Stage();
 
         window.initModality(Modality.APPLICATION_MODAL); //stop user from interacting with other windows
