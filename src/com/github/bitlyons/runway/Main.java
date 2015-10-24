@@ -285,7 +285,7 @@ public class Main extends Application {
             editRecord();
         });
     }
-
+    
     private void listPlanes() {
         ObservableList<Plane> plane = FXCollections.observableArrayList(planeDb);
 
