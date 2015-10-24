@@ -92,8 +92,7 @@ public class Main extends Application {
         MenuItem addNewStaff = new MenuItem("Add New Staff Member");
         addNewStaff.setOnAction(e -> {
             Employee newStaff = AddNew.staff();
-            if(newStaff.getName().equalsIgnoreCase("exitError88123")) ;
-            else {
+            if(!newStaff.getName().equalsIgnoreCase("exitError88123")) {
                 employeeDb.add(newStaff);
                 listEmployees(); //force main window back to employee view.
             }
@@ -156,7 +155,7 @@ public class Main extends Application {
         deleteRecord = new Button("Delete Record");
         editRecord = new Button("Edit Record");
 
-        bottomMenu.setHgrow(spacer, Priority.ALWAYS);
+        HBox.setHgrow(spacer, Priority.ALWAYS);
         bottomMenu.setPadding(new Insets(10, 5, 5, 10));
         bottomMenu.getChildren().addAll(spacer, editRecord, deleteRecord);
 
@@ -392,8 +391,7 @@ public class Main extends Application {
                             //TODO Create a check to see if record remains unchanged
 
                         else {
-                            employeeDb.remove(empTable.getSelectionModel().getSelectedIndex());
-                            employeeDb.add(editedStaff);
+                            employeeDb.set(empTable.getSelectionModel().getSelectedIndex(), editedStaff);
                             listEmployees();
                         }
                         break;
@@ -404,8 +402,7 @@ public class Main extends Application {
                             //TODO Create a check to see if record remains unchanged
 
                         else {
-                            planeDb.remove(planeTable.getSelectionModel().getSelectedIndex());
-                            planeDb.add(editedPlane);
+                            planeDb.set(planeTable.getSelectionModel().getSelectedIndex(), editedPlane);
                             listPlanes();
                         }
                         break;
@@ -416,8 +413,7 @@ public class Main extends Application {
                             //TODO Create a check to see if record remains unchanged
 
                         else {
-                            flightPathDb.remove(flightTable.getSelectionModel().getSelectedIndex());
-                            flightPathDb.add(editedPath);
+                            flightPathDb.set(flightTable.getSelectionModel().getSelectedIndex(), editedPath);
                             listFlightPath();
                         }
                         break;
