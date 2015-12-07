@@ -1,0 +1,106 @@
+/** The Css theme is based on JMetroDarkTheme by Pedro Duque Vieira
+*   Website: https://pixelduke.wordpress.com/
+*/
+
+.root {
+    -fx-background-color: #2F2F2F;
+    -fx-control-inner-background: rgb(50, 50, 50);
+}
+
+.table-view {
+    -fx-base: #1f1f1f;
+    -fx-control-inner-background: #1f1f1f;
+    -fx-background-color: #1f1f1f;
+
+}
+
+.table-view .column-header .label {
+    -fx-font-size: 10pt;
+    -fx-text-fill: white;
+    -fx-alignment: center-left;
+}
+
+.menu-bar, .menu-button {
+    -fx-background-color: derive(#1d1d1d, 20%);
+    -fx-selection-bar: derive(#1d1d1d, -7%);
+}
+
+.side-menu-button {
+    -fx-border-color: #e2e2e2;
+    -fx-border-width: 2;
+}
+
+.menu-button:hover {
+    -fx-background-color: #4a4a4a;
+}
+
+.menu-bar .label, .menu-button .label {
+    -fx-font-size: 12pt;
+    -fx-text-fill: white;
+    -fx-opacity: 0.9;
+}
+
+.text-field {
+    -fx-font-size: 12pt;
+    -fx-background-color: #DDDDDD;
+    -fx-text-fill: #000000;
+    -fx-prompt-text-fill: rgba(0, 0, 0, 0.3);
+}
+
+.check-box {
+    -fx-text-fill: #DDDDDD;
+}
+
+.label {
+    -fx-font-size: 11pt;
+    -fx-text-fill: white;
+    -fx-opacity: 0.6;
+}
+
+.table-view:focused .table-row-cell:filled:focused:selected {
+    -fx-background-color: -fx-focus-color;
+}
+
+.button {
+    -fx-padding: 5 22 5 22;
+    -fx-border-color: #e2e2e2;
+    -fx-border-width: 2;
+    -fx-background-radius: 0;
+    -fx-background-color: #2F2F2F;
+    -fx-font-family: Helvetica, Arial, sans-serif;
+    -fx-font-size: 11pt;
+    -fx-text-fill: #d8d8d8;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+
+.button:hover {
+    -fx-background-color: #3a3a3a;
+}
+
+.button:pressed, .button:default:hover:pressed {
+    -fx-background-color: white;
+    -fx-text-fill: #1d1d1d;
+}
+
+.button:focused {
+    -fx-border-color: white, white;
+    -fx-border-width: 1, 1;
+    -fx-border-style: solid, segments(1, 1);
+    -fx-border-radius: 0, 0;
+    -fx-border-insets: 1 1 1 1, 0;
+}
+
+.button:disabled, .button:default:disabled {
+    -fx-opacity: 0.4;
+    -fx-background-color: #1d1d1d;
+    -fx-text-fill: white;
+}
+
+.button:default {
+    -fx-background-color: -fx-focus-color;
+    -fx-text-fill: #ffffff;
+}
+
+.button:default:hover {
+    -fx-background-color: derive(-fx-focus-color, 30%);
+}
